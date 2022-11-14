@@ -1,25 +1,33 @@
 let input = document.getElementById("data")
 let print = document.getElementById("print")
+let stepsLog = document.getElementById("steps")
 
 function main(){
     let dataArr = input.value.split(" ")
     
     
-    eval(dataArr)
-
+    let steps = eval(dataArr)
     print.innerHTML = dataArr[0]
+
+    let stepString = ""
+    for (let i = 0; i < steps.length; i++){
+        stepString += steps[i] + "<br>"
+    }
+    stepsLog.innerHTML = stepString
 }
 
 function eval(arr){
+    let steps = []
+
     console.log("Postup řešení:")
-    display(arr)
+    steps.push(display(arr))
 
     for (let i = 0; i < arr.length; i++){
         if(isFunction(arr[i])){
             let ans = evalFunction(arr[i])
             arr[i] = ""+ans
 
-            display(arr)
+            steps.push(display(arr))
         }
     }
 
@@ -32,7 +40,7 @@ function eval(arr){
             arr[i-1] = ans
             i = 0
 
-            display(arr)
+            steps.push(display(arr))
         }
 
         if(arr[i] == "/"){
@@ -42,7 +50,7 @@ function eval(arr){
             arr[i-1] = ans
             i = 0
 
-            display(arr)
+            steps.push(display(arr))
         }
 
     }
@@ -55,7 +63,7 @@ function eval(arr){
             arr[i-1] = ans
             i = 0
 
-            display(arr)
+            steps.push(display(arr))
         }
 
         if(arr[i] == "-"){
@@ -65,10 +73,11 @@ function eval(arr){
             arr[i-1] = ans
             i = 0
 
-            display(arr)
+            steps.push(display(arr))
         }
     }
 
+    return steps
 }
 
 function display(arr){
@@ -77,6 +86,7 @@ function display(arr){
         result += " " + arr[i]
     }
     console.log(result)
+    return result
 }
 
 function add(arr, i){
