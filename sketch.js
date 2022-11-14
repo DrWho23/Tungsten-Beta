@@ -11,8 +11,7 @@ function main(){
 
     let stepString = ""
     for (let i = 0; i < steps.length; i++){
-        // stepString += steps[i] + "<br>"
-        stepString += steps[i]
+       stepString += steps[i] + "<br>"
     }
     stepsLog.innerHTML = stepString
 }
