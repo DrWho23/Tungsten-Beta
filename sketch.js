@@ -3,8 +3,9 @@ let print = document.getElementById("print")
 let stepsLog = document.getElementById("steps")
 
 function main(){
-    let dataArr = input.value.split(" ")
-    
+    let rawData = input.value
+    let removeWhiteSpace = rawData.replace(/\s/g, '')
+    let dataArr = removeWhiteSpace.split(/([- + * /])/)
     
     let steps = eval(dataArr)
     print.innerHTML = dataArr[0]
@@ -14,6 +15,8 @@ function main(){
        stepString += steps[i] + "<br>"
     }
     stepsLog.innerHTML = stepString
+
+
 }
 
 function eval(arr){
