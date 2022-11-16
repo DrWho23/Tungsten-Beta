@@ -43,7 +43,7 @@ function eval(arr){
         if(arr[i] == "*"){
             
             let ans = multiply(arr, i)
-            arr.splice(i,i+1)
+            arr.splice(i,2)
             arr[i-1] = ans
             i = 0
 
@@ -54,7 +54,7 @@ function eval(arr){
 
         if(arr[i] == "/"){
             let ans = divide(arr, i)
-            arr.splice(i,i+1)
+            arr.splice(i,2)
             arr[i-1] = ans
             i = 0
 
@@ -68,7 +68,7 @@ function eval(arr){
     for (let i = 0; i < arr.length; i++){
         if(arr[i] == "+"){
             let ans = add(arr, i)
-            arr.splice(i,i+1)
+            arr.splice(i,2)
             arr[i-1] = ans
             i = 0
 
@@ -79,7 +79,7 @@ function eval(arr){
 
         if(arr[i] == "-"){
             let ans = subtract(arr, i)
-            arr.splice(i,i+1)
+            arr.splice(i,2)
             arr[i-1] = ans
             i = 0
 
