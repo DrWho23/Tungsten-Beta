@@ -7,21 +7,12 @@ function main(){
     let removeWhiteSpace = rawData.replace(/\s/g, '')
     let dataArr = removeWhiteSpace.split(/([- + * /])/)
 
-    
-    let steps = eval(dataArr)
-    print.innerHTML = dataArr[0]
-
-    let stepString = ""
-    for (let i = 0; i < steps.length; i++){
-       stepString += steps[i] + "<br>"
-    }
-    stepsLog.innerHTML = stepString
-    
+    logSteps(eval(dataArr))
+    print.innerHTML = dataArr[0]   
     
 }
 
 function eval(arr){
-    console.log(arr)
     let steps = []
 
     console.log("Postup řešení:")
@@ -33,8 +24,6 @@ function eval(arr){
             arr[i] = ""+ans
 
             steps.push(display(arr))
-
-            console.log(arr)
         }
     }
 
@@ -48,8 +37,6 @@ function eval(arr){
             i = 0
 
             steps.push(display(arr))
-
-            console.log(arr)
         }
 
         if(arr[i] == "/"){
@@ -59,8 +46,6 @@ function eval(arr){
             i = 0
 
             steps.push(display(arr))
-
-            console.log(arr)
         }
 
     }
@@ -73,8 +58,6 @@ function eval(arr){
             i = 0
 
             steps.push(display(arr))
-
-            console.log(arr)
         }
 
         if(arr[i] == "-"){
@@ -84,12 +67,18 @@ function eval(arr){
             i = 0
 
             steps.push(display(arr))
-            
-            console.log(arr)
         }
     }
 
     return steps
+}
+
+function logSteps(steps){
+    let stepString = ""
+    for (let i = 0; i < steps.length; i++){
+       stepString += steps[i] + "<br>"
+    }
+    stepsLog.innerHTML = stepString
 }
 
 
