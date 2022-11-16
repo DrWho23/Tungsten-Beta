@@ -6,6 +6,7 @@ function main(){
     let rawData = input.value
     let removeWhiteSpace = rawData.replace(/\s/g, '')
     let dataArr = removeWhiteSpace.split(/([- + * /])/)
+
     
     let steps = eval(dataArr)
     print.innerHTML = dataArr[0]
@@ -15,11 +16,12 @@ function main(){
        stepString += steps[i] + "<br>"
     }
     stepsLog.innerHTML = stepString
-
-
+    
+    
 }
 
 function eval(arr){
+    console.log(arr)
     let steps = []
 
     console.log("Postup řešení:")
@@ -31,29 +33,34 @@ function eval(arr){
             arr[i] = ""+ans
 
             steps.push(display(arr))
+
+            console.log(arr)
         }
     }
 
     for (let i = 0; i < arr.length; i++){
 
         if(arr[i] == "*"){
+            
             let ans = multiply(arr, i)
-            arr.splice(i,i)
-            arr.splice(i,i)
+            arr.splice(i,i+1)
             arr[i-1] = ans
             i = 0
 
             steps.push(display(arr))
+
+            console.log(arr)
         }
 
         if(arr[i] == "/"){
             let ans = divide(arr, i)
-            arr.splice(i,i)
-            arr.splice(i,i)
+            arr.splice(i,i+1)
             arr[i-1] = ans
             i = 0
 
             steps.push(display(arr))
+
+            console.log(arr)
         }
 
     }
@@ -61,27 +68,30 @@ function eval(arr){
     for (let i = 0; i < arr.length; i++){
         if(arr[i] == "+"){
             let ans = add(arr, i)
-            arr.splice(i,i)
-            arr.splice(i,i)
+            arr.splice(i,i+1)
             arr[i-1] = ans
             i = 0
 
             steps.push(display(arr))
+
+            console.log(arr)
         }
 
         if(arr[i] == "-"){
             let ans = subtract(arr, i)
-            arr.splice(i,i)
-            arr.splice(i,i)
+            arr.splice(i,i+1)
             arr[i-1] = ans
             i = 0
 
             steps.push(display(arr))
+            
+            console.log(arr)
         }
     }
 
     return steps
 }
+
 
 function display(arr){
     let result = ""
