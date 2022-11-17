@@ -16,7 +16,7 @@ class EvalData{
         for (let i = 0; i < data.length; i++){
             if(this.isFunction(data[i])){
                 let ans = this.evalFunction(data[i])
-                data[i] = ""+ans
+                data[i] = ans
     
                 this.steps.push(this.display())
             }
@@ -69,34 +69,43 @@ class EvalData{
     display(){
         let result = ""
         for(let i = 0; i < this.data.length; i++){
-            result += " " + this.data[i]
+            if(typeof this.data[i] == "object"){
+                result += " " + this.data[i].write()
+            }else{
+                result += " " + this.data[i]
+            }
         }
         console.log(result)
         return result
     }
 
     add(i){
-        let a = +this.data[i-1]
-        let b = +this.data[i+1]
-        return a + b
+        let a = this.data[i-1]
+        let b = this.data[i+1]
+        a.add(b)
+        return a
     }
     
     subtract(i){
-        let a = +this.data[i-1]
-        let b = +this.data[i+1]
-        return a - b
+        let a = this.data[i-1]
+        let b = this.data[i+1]
+        a.subtract(b)
+        return a
     }
     
     multiply(i){
-        let a = +this.data[i-1]
-        let b = +this.data[i+1]
-        return a * b
+        let a = this.data[i-1]
+        let b = this.data[i+1]
+        a.multiply(b)
+        return a
+        
     }
     
     divide(i){
-        let a = +this.data[i-1]
-        let b = +this.data[i+1]
-        return a / b
+        let a = this.data[i-1]
+        let b = this.data[i+1]
+        a.divide(b)
+        return a
     }
 
     evalFunction(name){
@@ -126,6 +135,10 @@ class EvalData{
     }
 
     isFunction(name){
+        if(typeof name != "string"){
+            return false
+        }
+
         let data = name.split(/[()]+/)
     
         if(data[0] == "sqrt"){

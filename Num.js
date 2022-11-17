@@ -108,6 +108,9 @@ class Num{
         else if(tempA == 0){
             this.a = tempA
             this.b = 1
+        }else{
+            this.a = tempA
+            this.b = tempB
         }
     }
 }

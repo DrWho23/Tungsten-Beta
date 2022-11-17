@@ -8,8 +8,7 @@ function main(){
     let dataArr = new PrepareData(dataString).arr
     let data = new EvalData(dataArr)
 
-    print.innerHTML = data.data
-
+    print.innerHTML = data.data[0].write()
     stepsLog.innerHTML = data.logSteps()
     
 }

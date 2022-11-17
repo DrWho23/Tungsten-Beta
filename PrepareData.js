@@ -13,6 +13,13 @@ class PrepareData{
     }
 
     convertToNums(){
-        
+        for(let i = 0; i < this.arr.length; i++){
+            if(isNaN(this.arr[i]) == false){
+                let number = new Num(+this.arr[i])
+                this.arr[i] = number
+            }
+        }
+
+        console.log(this.arr)
     }
 }
