@@ -22,6 +22,10 @@ class Num{
         if(this.b == 1){
             return this.a
         }
+
+        if(this.a == NaN || this.b == NaN){
+            return NaN
+        }
         return this.a + "/" + this.b
     }
 
@@ -112,5 +116,9 @@ class Num{
             this.a = tempA
             this.b = tempB
         }
+    }
+
+    toDecimal(){
+        return this.a/this.b
     }
 }

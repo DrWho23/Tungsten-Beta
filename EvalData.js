@@ -165,4 +165,12 @@ class EvalData{
         }
         return stepString
     }
+
+    writeAnswer(){
+        let result = this.display()
+        if(this.data.length == 1 && this.data[0].b != 1){
+            result += " v desetinné podobě " + this.data[0].toDecimal()
+        }
+        return result
+    }
 }
