@@ -1,10 +1,27 @@
 body {
     font-family: "Garamond",serif;
     background-color: rgb(24, 24, 24);
-    color: rgb(137, 151, 173);
+    color: rgb(119, 137, 164);
 }
 
 .titles {
-    color: rgb(117, 117, 117);
-    /* font-family: "Helvetica",serif; */
+    color: rgb(92, 92, 92);
+    font-family: "Helvetica",serif;
 }
+
+#submit{
+    background-color: #3e485b; /* Green */
+    border: none;
+    color: rgb(136, 136, 136);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#data {
+    outline-width: 0;
+    font-family: "Garamond",serif;
+    border: none;
+    color: rgb(185, 185, 185);
+    background-color: #2c2c2c
+  }
