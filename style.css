@@ -16,7 +16,9 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    margin-bottom: 5px;
 }
+
 
 #data {
     outline-width: 0;
