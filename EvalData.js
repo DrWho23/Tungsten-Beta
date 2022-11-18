@@ -170,7 +170,7 @@ class EvalData{
     writeAnswer(){
         let result = this.display()
         if(this.data.length == 1 && this.data[0].b != 1 && typeof this.data[0].b !== "undefined"){
-            result += " v desetinné podobě " + this.data[0].toDecimal()
+            result += "<br><label class = \"titles\">alternativně</label><br>" + this.data[0].toDecimal()
         }
         return result
     }

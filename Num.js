@@ -114,15 +114,17 @@ class Num{
         }
     }
 
+    // Euclidean algorithm for finding greatest common divisor (gcd)
     gcd(x,y){
         x = Math.abs(x);
         y = Math.abs(y);
 
         while(y) {
-            var t = y;
-            y = x % y;
-            x = t;
+            let t = x
+            x = y
+            y = t%y
         }
+        
         return x;
     }
 
