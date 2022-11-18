@@ -1,0 +1,10 @@
+body {
+    font-family: "Garamond",serif;
+    background-color: rgb(24, 24, 24);
+    color: rgb(137, 151, 173);
+}
+
+.titles {
+    color: rgb(117, 117, 117);
+    /* font-family: "Helvetica",serif; */
+}
