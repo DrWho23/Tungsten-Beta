@@ -117,7 +117,7 @@ class EvalData{
             result = Math.sqrt(value)
         }
         if(data[0] == "power"){
-            argument = data[1].split(",")
+            let argument = value.split(",")
             let x = +argument[0]
             let exponent = +argument[1]
     
@@ -130,8 +130,9 @@ class EvalData{
         if(data[0] == "cos"){
             result = Math.cos(+data[1])
         }
-    
-        return result
+        
+        let toNum = new Num(result)
+        return toNum
     }
 
     isFunction(name){
@@ -168,7 +169,7 @@ class EvalData{
 
     writeAnswer(){
         let result = this.display()
-        if(this.data.length == 1 && this.data[0].b != 1){
+        if(this.data.length == 1 && this.data[0].b != 1 && typeof this.data[0].b !== "undefined"){
             result += " v desetinné podobě " + this.data[0].toDecimal()
         }
         return result

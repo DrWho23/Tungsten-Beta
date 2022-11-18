@@ -23,10 +23,12 @@ class Num{
             return this.a
         }
 
-        if(this.a == NaN || this.b == NaN){
-            return NaN
+        if(typeof this.a === "undefined" || typeof this.b === "undefined"){
+            return undefined
         }
-        return this.a + "/" + this.b
+
+         return this.a + "/" + this.b
+
     }
 
     multiply(num){
@@ -106,8 +108,8 @@ class Num{
         let tempB = this.b / comDiv
 
         if(tempB == 0){
-            this.a = NaN
-            this.b = NaN
+            this.a = undefined
+            this.b = undefined
         }
         else if(tempA == 0){
             this.a = tempA

@@ -10,5 +10,6 @@ function main(){
 
     print.innerHTML = data.writeAnswer()
     stepsLog.innerHTML = data.logSteps()
+
     
 }
