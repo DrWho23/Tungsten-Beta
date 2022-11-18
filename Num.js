@@ -96,13 +96,7 @@ class Num{
     }
 
     simplify(){
-        let comDiv = 1
-
-        for(let i = 1; i <= this.a; i++){
-            if(this.a % i == 0 && this.b % i == 0){
-                comDiv = i
-            }
-        }
+        let comDiv = this.gcd(this.a, this.b)
 
         let tempA = this.a / comDiv
         let tempB = this.b / comDiv
@@ -118,6 +112,18 @@ class Num{
             this.a = tempA
             this.b = tempB
         }
+    }
+
+    gcd(x,y){
+        x = Math.abs(x);
+        y = Math.abs(y);
+
+        while(y) {
+            var t = y;
+            y = x % y;
+            x = t;
+        }
+        return x;
     }
 
     toDecimal(){
