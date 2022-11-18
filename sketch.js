@@ -19,6 +19,11 @@ function main(){
         stepsLog.innerHTML = data.logSteps()
 
     }    
+
+    // let dataString = "sqrt(9+1)"
+    // console.log(dataString)
+
+    // new PrepareData(dataString)
 }
 
 function isEmpty(string){

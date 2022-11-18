@@ -1,6 +1,7 @@
 class Num{
 
     constructor(a,b){
+        this.type = "Num"
         this.a
         this.b
 
@@ -124,7 +125,7 @@ class Num{
             x = y
             y = t%y
         }
-        
+
         return x;
     }
 
