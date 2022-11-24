@@ -1,6 +1,8 @@
 class Num{
 
     constructor(a,b){
+        this.type = "num"
+        
         this.a
         this.b
 
