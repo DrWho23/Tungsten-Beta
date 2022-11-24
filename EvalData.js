@@ -21,6 +21,25 @@ class EvalData{
                 this.steps.push(this.display())
             }
         }
+
+        for (let i = 0; i < data.length; i++){
+            if(data[i].type == "num"){
+                if(data[i-1] == "-"){
+
+                    data[i].multiply(new Num(-1))
+
+                    if(i > 1 && data[i-2].type == "num"){
+                        data[i-1] = "+"
+                    }else{
+                        data.splice(i-1,1)
+                    }
+                    i = 0
+                    this.steps.push(this.display())
+                }
+                
+                
+            }
+        }
     
         for (let i = 0; i < data.length; i++){
     
@@ -80,32 +99,64 @@ class EvalData{
     }
 
     add(i){
-        let a = this.data[i-1]
-        let b = this.data[i+1]
-        a.add(b)
-        return a
+        if( this.data[i-1] == undefined){
+            console.error("^+ Invalid expression")
+            return null
+        }else if( this.data[i+1] == undefined){
+            console.error("+^ Invalid expression")
+            return null
+        }else{
+            let a = this.data[i-1]
+            let b = this.data[i+1]
+            a.add(b)
+            return a
+        }
     }
     
     subtract(i){
-        let a = this.data[i-1]
-        let b = this.data[i+1]
-        a.subtract(b)
-        return a
+        if( this.data[i-1] == undefined){
+            console.error("^- Invalid expression")
+            return null
+        }else if( this.data[i+1] == undefined){
+            console.error("-^ Invalid expression")
+            return null
+        }else{
+            let a = this.data[i-1]
+            let b = this.data[i+1]
+            a.subtract(b)
+            return a
+        }
     }
+
     
     multiply(i){
-        let a = this.data[i-1]
-        let b = this.data[i+1]
-        a.multiply(b)
-        return a
-        
+        if( this.data[i-1] == undefined){
+            console.error("^? Invalid expression")
+            return null
+        }else if( this.data[i+1] == undefined){
+            console.error("?^ Invalid expression")
+            return null
+        }else{
+            let a = this.data[i-1]
+            let b = this.data[i+1]
+            a.multiply(b)
+            return a
+        } 
     }
     
     divide(i){
-        let a = this.data[i-1]
-        let b = this.data[i+1]
-        a.divide(b)
-        return a
+        if( this.data[i-1] == undefined){
+            console.error("^/ Invalid expression")
+            return null
+        }else if( this.data[i+1] == undefined){
+            console.error("/^ Invalid expression")
+            return null
+        }else{
+            let a = this.data[i-1]
+            let b = this.data[i+1]
+            a.divide(b)
+            return a
+        }
     }
 
     evalFunction(name){

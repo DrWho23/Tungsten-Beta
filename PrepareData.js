@@ -5,6 +5,7 @@ class PrepareData{
 
         this.parseData(dataString)
         this.convertToNums()
+        this.convertSigns()
     }
 
     parseData(dataString){
@@ -15,24 +16,15 @@ class PrepareData{
     convertToNums(){
         for(let i = 0; i < this.arr.length; i++){
             if(isNaN(this.arr[i]) == false){
-                if(this.arr[i-1] == "-"){
-
-                    let number = new Num(+this.arr[i]*-1)
-                    this.arr[i] = number
-
-                    if(i > 1 && this.arr[i-2].type == "num"){
-                        this.arr[i-1] = "+"
-                    }else{
-                        this.arr.splice(i-1,1)
-                    }
-                    i=0
-                }else{
                     let number = new Num(+this.arr[i])
                     this.arr[i] = number
                 }
                 
-            }
-            
+        }
+    }
+
+    convertSigns(){
+        for(let i = 0; i < this.arr.length; i++){
             if(this.arr[i].type == "num"){
                 if(this.arr[i-1] == "-"){
 
@@ -43,12 +35,22 @@ class PrepareData{
                     }else{
                         this.arr.splice(i-1,1)
                     }
-                    i=0
+
+                }
+
+                if(this.arr[i-1] == "+"){
+
+                    if(i > 1 && this.arr[i-2].type == "num"){
+                        this.arr[i-1] = "+"
+                    }else{
+                        this.arr.splice(i-1,1)
+                        
+                    }
+
+                
                 }
                 
             }
         }
-
-        //console.log(this.arr)
     }
 }

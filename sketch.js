@@ -20,10 +20,6 @@ function main(){
 
     }   
     
-    // let dataString = "1*-+-1"
-    // let dataArr = new PrepareData(dataString).arr
-    // console.log(dataArr)
-    //let data = new EvalData(dataArr)
 }
 
 function isEmpty(string){
