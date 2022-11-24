@@ -15,7 +15,8 @@ function main(){
         let dataArr = new PrepareData(dataString).arr
         let data = new EvalData(dataArr)
 
-        print.innerHTML = data.writeAnswer()
+        // print.innerHTML = data.writeAnswer()
+        print.innerHTML = data.steps[data.steps.length-1]
         stepsLog.innerHTML = data.logSteps()
 
     }   

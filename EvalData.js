@@ -9,6 +9,7 @@ class EvalData{
     }
     
     eval(){
+        let error = false
         let data = this.data
         this.steps.push(this.display())
         console.log("Postup řešení:")
@@ -34,7 +35,7 @@ class EvalData{
                     }else{
                         data.splice(i-1,1)
                     }
-                    i = 0
+                    i--
                     this.steps.push(this.display())
                 }
 
@@ -44,8 +45,10 @@ class EvalData{
                         data[i-1] = "+"
                     }else{
                         data.splice(i-1,1)
+                        i--
                         
                     }
+                    this.steps.push(this.display())
                 }
                  
             }
@@ -56,6 +59,12 @@ class EvalData{
             if(data[i] == "*"){
                 
                 let ans = this.multiply(i)
+
+                if(ans == null){
+                    this.steps.push("Chyba násobení")
+                    error = true
+                    break
+                }
                 data.splice(i,2)
                 data[i-1] = ans
                 i = 0
@@ -65,6 +74,11 @@ class EvalData{
     
             if(data[i] == "/"){
                 let ans = this.divide(i)
+                if(ans == null){
+                    this.steps.push("Chyba dělení")
+                    error = true
+                    break
+                }
                 data.splice(i,2)
                 data[i-1] = ans
                 i = 0
@@ -73,10 +87,20 @@ class EvalData{
             }
     
         }
+
+        if(error == true){
+            error = false
+            return
+        }
     
         for (let i = 0; i < data.length; i++){
             if(data[i] == "+"){
                 let ans = this.add(i)
+                if(ans == null){
+                    this.steps.push("Chyba sčítání")
+                    error = true
+                    break
+                }
                 data.splice(i,2)
                 data[i-1] = ans
                 i = 0
@@ -86,12 +110,22 @@ class EvalData{
     
             if(data[i] == "-"){
                 let ans = this.subtract(i)
+                if(ans == null){
+                    this.steps.push("Chyba odčítání")
+                    error = true
+                    break
+                }
                 data.splice(i,2)
                 data[i-1] = ans
                 i = 0
     
                 this.steps.push(this.display())
             }
+        }
+
+        if(error == true){
+            error = false
+            return
         }
     }
 
@@ -141,10 +175,10 @@ class EvalData{
     
     multiply(i){
         if( this.data[i-1] == undefined || typeof this.data[i-1] == "string"){
-            console.error("^? Invalid expression")
+            console.error("^* Invalid expression")
             return null
         }else if( this.data[i+1] == undefined || typeof this.data[i+1] == "string"){
-            console.error("?^ Invalid expression")
+            console.error("*^ Invalid expression")
             return null
         }else{
             let a = this.data[i-1]
