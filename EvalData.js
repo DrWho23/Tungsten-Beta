@@ -22,6 +22,7 @@ class EvalData{
             }
         }
 
+        //tahle část je poněkud zvláštní ale snaží se upravit znaménka např: +-1 = -1
         for (let i = 0; i < data.length; i++){
             if(data[i].type == "num"){
                 if(data[i-1] == "-"){
@@ -36,8 +37,17 @@ class EvalData{
                     i = 0
                     this.steps.push(this.display())
                 }
-                
-                
+
+                if(data[i-1] == "+"){
+
+                    if(i > 1 && data[i-2].type == "num"){
+                        data[i-1] = "+"
+                    }else{
+                        data.splice(i-1,1)
+                        
+                    }
+                }
+                 
             }
         }
     
@@ -99,10 +109,10 @@ class EvalData{
     }
 
     add(i){
-        if( this.data[i-1] == undefined){
+        if( this.data[i-1] == undefined || typeof this.data[i-1] == "string"){
             console.error("^+ Invalid expression")
             return null
-        }else if( this.data[i+1] == undefined){
+        }else if( this.data[i+1] == undefined || typeof this.data[i+1] == "string"){
             console.error("+^ Invalid expression")
             return null
         }else{
@@ -114,10 +124,10 @@ class EvalData{
     }
     
     subtract(i){
-        if( this.data[i-1] == undefined){
+        if( this.data[i-1] == undefined || typeof this.data[i-1] == "string"){
             console.error("^- Invalid expression")
             return null
-        }else if( this.data[i+1] == undefined){
+        }else if( this.data[i+1] == undefined || typeof this.data[i+1] == "string"){
             console.error("-^ Invalid expression")
             return null
         }else{
@@ -130,10 +140,10 @@ class EvalData{
 
     
     multiply(i){
-        if( this.data[i-1] == undefined){
+        if( this.data[i-1] == undefined || typeof this.data[i-1] == "string"){
             console.error("^? Invalid expression")
             return null
-        }else if( this.data[i+1] == undefined){
+        }else if( this.data[i+1] == undefined || typeof this.data[i+1] == "string"){
             console.error("?^ Invalid expression")
             return null
         }else{
@@ -145,10 +155,10 @@ class EvalData{
     }
     
     divide(i){
-        if( this.data[i-1] == undefined){
+        if( this.data[i-1] == undefined || typeof this.data[i-1] == "string"){
             console.error("^/ Invalid expression")
             return null
-        }else if( this.data[i+1] == undefined){
+        }else if( this.data[i+1] == undefined || typeof this.data[i+1] == "string"){
             console.error("/^ Invalid expression")
             return null
         }else{

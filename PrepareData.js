@@ -46,8 +46,6 @@ class PrepareData{
                         this.arr.splice(i-1,1)
                         
                     }
-
-                
                 }
                 
             }
