@@ -18,6 +18,7 @@ class Num{
         }
 
         this.simplify()
+
     }
 
     write(){
@@ -114,7 +115,18 @@ class Num{
             this.a = tempA
             this.b = tempB
         }
+
+        if(this.a < 0 && this.b < 0){
+            this.a = (-1)*this.a
+            this.b = (-1)*this.b
+        }
+
+        if(this.b < 0 && this.a > 0){
+            this.a = (-1)*this.a
+            this.b = (-1)*this.b
+        }
     }
+
 
     // Euclidean algorithm for finding greatest common divisor (gcd)
     gcd(x,y){
