@@ -5,6 +5,7 @@ class PrepareData{
 
         this.parseData(dataString)
         this.convertToNums()
+        this.convertToVar()
         this.convertSigns()
 
         while((this.arr.includes(")") || this.arr.includes("(")) && this.validBracketsInput()){
@@ -29,6 +30,15 @@ class PrepareData{
         }
     }
 
+    convertToVar(){
+        for(let i = 0; i < this.arr.length; i++){
+            if(typeof this.arr[i] == "string" && this.arr[i].match(/[a-z]/i)){
+                let variable = new Var(this.arr[i])
+                this.arr[i] = variable
+            }
+        }
+    }
+
     convertSigns(){
         for(let i = 0; i < this.arr.length; i++){
             if(this.arr[i].type == "num"){
@@ -36,7 +46,8 @@ class PrepareData{
 
                     this.arr[i].multiply(new Num(-1))
 
-                    if(i > 1 && this.arr[i-2].type == "num"){
+                    // if(i > 1 && this.arr[i-2].type == "num")
+                    if(i > 1 && typeof this.arr[i-2] == "object"){
                         this.arr[i-1] = "+"
                     }else{
                         this.arr.splice(i-1,1)
@@ -46,7 +57,8 @@ class PrepareData{
 
                 if(this.arr[i-1] == "+"){
 
-                    if(i > 1 && this.arr[i-2].type == "num"){
+                    // if(i > 1 && this.arr[i-2].type == "num")
+                    if(i > 1 && typeof this.arr[i-2] == "object"){
                         this.arr[i-1] = "+"
                     }else{
                         this.arr.splice(i-1,1)

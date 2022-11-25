@@ -13,11 +13,11 @@ function main(){
     }else{
 
         let dataArr = new PrepareData(dataString).arr
-        let data = new EvalData(dataArr)
+        // let data = new EvalData(dataArr)
 
         // print.innerHTML = data.writeAnswer()
         // print.innerHTML = data.steps[data.steps.length-1]
-        print.innerHTML = data.data[0].write()
+        // print.innerHTML = data.data[0].write()
         // stepsLog.innerHTML = data.logSteps()
 
     }   
