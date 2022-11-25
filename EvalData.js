@@ -1,7 +1,7 @@
 class EvalData{
     constructor(data){
         this.data = data
-        this.steps
+        this.steps = []
 
         this.eval(data)
 
@@ -23,14 +23,14 @@ class EvalData{
             }
             let result = this.eval(arr[indexOfBrackets].data)
             arr[indexOfBrackets] = result
+            this.steps.push(this.display(this.data))
         }
 
        
         let numData = new EvalNumberData(arr)
         let result = numData.data[0]
+        this.steps.push(this.display(this.data))
         return result
-        
- 
     }
 
     containsBrackets(arr){
@@ -41,6 +41,28 @@ class EvalData{
             }
         }
         return result
+    }
+
+    display(){
+        let result = ""
+        for(let i = 0; i < this.data.length; i++){
+            if(typeof this.data[i] == "object"){
+                result += " " + this.data[i].write()
+            }else{
+                result += " " + this.data[i]
+            }
+        }
+        console.log(result)
+        return result
+    }
+
+    logSteps(){
+        
+        let stepString = ""
+        for (let i = 0; i < this.steps.length; i++){
+           stepString += this.steps[i] + "<br>"
+        }
+        return stepString
     }
    
 }
