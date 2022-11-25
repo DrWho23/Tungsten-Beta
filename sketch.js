@@ -13,13 +13,20 @@ function main(){
     }else{
 
         let dataArr = new PrepareData(dataString).arr
-        let data = new EvalData(dataArr)
+        let data = new EvalData(dataArr).data
 
         // print.innerHTML = data.writeAnswer()
-        print.innerHTML = data.steps[data.steps.length-1]
-        stepsLog.innerHTML = data.logSteps()
+        // print.innerHTML = data.steps[data.steps.length-1]
+        print.innerHTML = data[0].write()
+        // stepsLog.innerHTML = data.logSteps()
 
     }   
+
+    // let dataString = "2+2"
+    // console.log(dataString)
+    // let dataArr = new PrepareData(dataString).arr
+    // let data = new EvalData(dataArr)
+    // console.log(data)
     
 }
 
