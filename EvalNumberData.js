@@ -25,12 +25,13 @@ class EvalNumberData{
 
         //tahle část je poněkud zvláštní ale snaží se upravit znaménka např: +-1 = -1
         for (let i = 0; i < data.length; i++){
-            if(data[i].type == "num"){
+            // if(data[i].type == "num")
+            if(typeof data[i] == "object"){
                 if(data[i-1] == "-"){
 
                     data[i].multiply(new Num(-1))
 
-                    if(i > 1 && data[i-2].type == "num"){
+                    if(i > 1 && typeof data[i-2] == "object"){
                         data[i-1] = "+"
                     }else{
                         data.splice(i-1,1)
@@ -41,7 +42,7 @@ class EvalNumberData{
 
                 if(data[i-1] == "+"){
 
-                    if(i > 1 && data[i-2].type == "num"){
+                    if(i > 1 && typeof data[i-2] == "object"){
                         data[i-1] = "+"
                     }else{
                         data.splice(i-1,1)

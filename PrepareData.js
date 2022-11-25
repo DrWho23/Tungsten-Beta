@@ -6,11 +6,13 @@ class PrepareData{
         this.parseData(dataString)
         this.convertToNums()
         this.convertToVar()
-        this.convertSigns()
 
         while((this.arr.includes(")") || this.arr.includes("(")) && this.validBracketsInput()){
             this.convertToBracket()
         }
+
+        this.convertSigns()
+        this.addBracketsMultiplication()
 
         console.log(this.arr)
     }
@@ -173,5 +175,19 @@ class PrepareData{
         this.arr[start+1] = brackets
         this.arr.splice(start,1)
 
+    }
+
+    addBracketsMultiplication(){
+        for(let i = 0; i < this.arr.length; i++){
+            if(this.arr[i].type == "brackets"){
+                if(typeof this.arr[i+1] == "object"){
+                    this.arr.splice(i+1,0,"*")
+                }
+                if(i>0 && typeof this.arr[i-1] == "object"){
+                    this.arr.splice(i,0,"*")
+                }
+            }
+            
+        }
     }
 }
