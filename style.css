@@ -12,6 +12,9 @@ body {
 }
 
 #submit{
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
     background-color: #3e485b; /* Green */
     border: none;
     color: rgb(136, 136, 136);
@@ -23,11 +26,18 @@ body {
 
 
 #data {
+    font-size: 30px;
     outline-width: 0;
+    width: 70%;
+    height: 38px;
     font-family: "Garamond",serif;
     border: none;
     color: rgb(185, 185, 185);
     background-color: #2c2c2c
+}
+
+#print{
+    font-size: 35px;
 }
 
 #steps{
@@ -51,13 +61,14 @@ color: rgb(92, 118, 95);
 .tabContainer .buttonContainer button{
     color: #c1b4b4;
     background-color: #343434;
-    font-size: 8px;
+    font-size: 15px;
     font-weight: bold;
     padding: 3px;
     margin-right: -4px;
     border: none;
     outline: none;
-    width: 50px;
+    width: 120px;
+    height: 40px;
 }   
 
 .tabContainer .buttonContainer button:hover{
@@ -65,8 +76,9 @@ color: rgb(92, 118, 95);
     background-color: #181818;;
 }
 
-.tabContainer .tbaPanel{
-    margin-top: 50px;
-    margin-left: 50px;
+#panel1 {
+    float: center;
+    margin-top: 20vh;
+    margin-left: 15%;
     display: none;
 }
