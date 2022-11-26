@@ -9,10 +9,10 @@ class PrepareData{
 
         while((this.arr.includes(")") || this.arr.includes("(")) && this.validBracketsInput()){
             this.convertToBracket()
+            this.addBracketsMultiplication()
         }
 
         this.convertSigns()
-        this.addBracketsMultiplication()
 
         console.log(this.arr)
     }
