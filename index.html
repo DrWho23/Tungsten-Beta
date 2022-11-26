@@ -8,14 +8,29 @@
 </head>
 <body>
     <link rel="stylesheet" href="style.css">
-    <h3 class="titles">Tungsten Beta</h3>
-    <input type="text" id="data"></input> <button id="submit" onclick="main()">=</button>
-    <br>
-    <label id="print"></label>
-    <br>
-    <br>
-    <label class="titles"><b>Postup:</b></label>
-    <div id="steps"></div>
+
+
+
+    <div class="tabContainer">
+        <div class="buttonContainer">
+            <button onclick="showPanel(0)">Calculator</button>
+            <button onclick="showPanel(1)">Plot</button>
+            <button onclick="showPanel(2)">Tab3</button>
+        </div>
+
+        <div id="panel1" class="tbaPanel">
+            <input type="text" id="data"></input> <button id="submit" onclick="main()">=</button>
+            <br>
+            <label id="print"></label>
+            <br>
+            <br>
+            <label class="titles"><b>Postup:</b></label>
+            <div id="steps"></div>
+        </div>
+        <div class="tbaPanel"></div>
+        <div class="tbaPanel"></div>
+
+    </div>
 
     <script src="Brackets.js"></script>
     <script src="Var.js"></script>

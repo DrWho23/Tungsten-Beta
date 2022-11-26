@@ -2,6 +2,26 @@ let input = document.getElementById("data")
 let print = document.getElementById("print")
 let stepsLog = document.getElementById("steps")
 
+//Taby
+let tabButtons = document.querySelectorAll(".tabContainer .buttonContainer button")
+let tabPanels = document.querySelectorAll(".tabContainer .tbaPanel")
+
+function showPanel(panelIndex){
+    tabButtons.forEach(function(node){
+        node.style.backgroundColor = ""
+        node.style.color = ""
+    })
+    tabButtons[panelIndex].style.color = "#c1b4b4"
+    tabButtons[panelIndex].style.backgroundColor = "#181818"
+    
+    tabPanels.forEach(function(node){
+        node.style.display = "none"
+    })
+    tabPanels[panelIndex].style.display = "block"
+}
+showPanel(0)
+////
+
 function main(){
     let dataString = input.value
     
